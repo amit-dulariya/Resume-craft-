@@ -4,6 +4,17 @@ export default function PersonalInfoForm() {
   const { resume, updatePersonal } = useResume()
   const { personal } = resume
 
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        updatePersonal({ profileImage: reader.result as string })
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
@@ -24,6 +35,23 @@ export default function PersonalInfoForm() {
             onChange={(e) => updatePersonal({ title: e.target.value })}
             placeholder="Software Engineer"
           />
+        </div>
+      </div>
+
+      <div>
+        <label className="label-text">Profile Photo</label>
+        <div className="flex gap-4 items-center">
+          <input
+            className="input-field flex-1"
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
+          {personal.profileImage && (
+            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-500 shadow-md">
+              <img src={personal.profileImage} alt="Profile" className="w-full h-full object-cover" />
+            </div>
+          )}
         </div>
       </div>
 

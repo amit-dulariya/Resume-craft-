@@ -17,6 +17,8 @@ import {
   CreativeTemplate,
   MinimalTemplate,
   ExecutiveTemplate,
+  TimelineTemplate,
+  ProfessionalTemplate,
 } from '../components/templates/ResumeTemplates'
 
 type Section = 'personal' | 'experience' | 'education' | 'skills' | 'projects'
@@ -38,6 +40,8 @@ function TemplateRenderer({ templateId }: { templateId: TemplateId }) {
     case 'creative': return <CreativeTemplate data={resume} />
     case 'minimal': return <MinimalTemplate data={resume} />
     case 'executive': return <ExecutiveTemplate data={resume} />
+    case 'timeline': return <TimelineTemplate data={resume} />
+    case 'professional': return <ProfessionalTemplate data={resume} />
     default: return <ModernTemplate data={resume} />
   }
 }

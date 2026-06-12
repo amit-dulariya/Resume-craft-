@@ -8,6 +8,7 @@ export interface PersonalInfo {
   linkedin: string
   github: string
   summary: string
+  profileImage?: string
 }
 
 export interface Experience {
@@ -61,7 +62,7 @@ export interface ResumeData {
   certifications: Certification[]
 }
 
-export type TemplateId = 'modern' | 'classic' | 'creative' | 'minimal' | 'executive'
+export type TemplateId = 'modern' | 'classic' | 'creative' | 'minimal' | 'executive' | 'timeline' | 'professional'
 
 export interface Template {
   id: TemplateId
@@ -106,6 +107,20 @@ export const TEMPLATES: Template[] = [
     description: 'Premium layout for senior professionals',
     preview: 'bg-gradient-to-br from-emerald-600 to-teal-700',
     accent: '#059669',
+  },
+  {
+    id: 'timeline',
+    name: 'Timeline',
+    description: 'Modern timeline layout with blue accents and sidebar',
+    preview: 'bg-gradient-to-br from-blue-400 to-blue-600',
+    accent: '#2563eb',
+  },
+  {
+    id: 'professional',
+    name: 'Professional',
+    description: 'Modern design with circular profile image and orange accents',
+    preview: 'bg-gradient-to-br from-orange-400 to-orange-600',
+    accent: '#f97316',
   },
 ]
 
